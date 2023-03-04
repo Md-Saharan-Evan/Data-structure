@@ -1,0 +1,297 @@
+﻿# task 1: a
+
+
+
+
+
+
+def factorial(n):
+   if n == 1:
+       return n
+   else:
+       return n*factorial(n-1)
+
+
+num = 7
+
+
+
+
+if num < 0:
+   print("Sorry, factorial does not exist for negative numbers")
+elif num == 0:
+   print("The factorial of 0 is 1")
+else:
+   print("The factorial of", num, "is", factorial(num))
+
+
+
+
+
+
+
+
+#task 1 : b
+
+
+def solve(n):
+   if n <= 2:
+      return n - 1
+   else:
+      return solve(n - 1) + solve(n - 2)
+
+
+n = 6
+print(solve(n))
+
+
+
+
+
+
+
+
+
+
+#task 1: c
+def printArr(n,idx):
+    if idx==len(n):
+        return 
+    else:
+        print(n[idx])
+        printArr(n,idx+1) 
+n=[1,2,3,4,5]
+printArr(n,0)
+
+
+
+
+#task 1: d
+def powerN(num,timmes):
+    if timmes==0:
+        return 1
+    else:
+        return num*powerN(num,timmes-1)
+num=int(input("number"))
+times=int(input("Power"))
+print(powerN(num,times))
+
+
+
+
+
+
+#task 2: a
+def binary( decimal_number ):
+    if decimal_number == 0:
+        return 0
+    else:
+        return (decimal_number % 2 + 10 *binary(int(decimal_number // 2)))
+ 
+
+
+decimal_number = int(input("give me decimal value"))
+
+
+print(binary(decimal_number))
+
+
+
+
+#task 2: b
+
+
+class Node:
+    def __init__(self,value):
+        self.value= value
+        self.next=None
+class linked_list:
+    def __init__(self,arr):
+        self.head=None
+        tail=None
+        for i in range(len(arr)):
+            n_node=Node(arr[i])
+            if self.head==None:
+                self.head=n_node
+                tail=n_node
+            else:
+                tail.next=n_node
+                tail=n_node
+                
+    def add(self):
+        return self.sum(self.head)
+    def sum(self,head):
+        if head == None:
+            return 0
+        else:
+            return head.value+self.sum(head.next)
+array=[1,2,3,4,5,6,7]
+c1=linked_list(array)
+print(c1.add())
+
+
+
+
+#task 2: c
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+
+
+
+class reversed_linklist:
+    def __init__(self, array):
+        self.head = None
+        tail = None
+        for i in range(len(array)):
+            n_node = Node(array[i])
+            if self.head == None:
+                self.head = n_node
+                tail = n_node
+            else:
+                tail.next = n_node
+                tail = n_node
+
+
+    def reverse_print(self):
+        return self.reverse(self.head)
+
+
+    def reverse(self, head):
+        if head.next is None:
+            print(head.value)
+        else:
+            self.reverse(head.next)
+            print(head.value)
+
+
+
+
+array = [10,20,30,40,50,60,70,80]
+listlinked = reversed_linklist(array)
+listlinked.reverse_print()
+
+
+
+
+
+
+#task 3: 
+def hogbuilder(n):
+    if n==1:
+        return 8
+    else:
+        return 5+hogbuilder(n-1)
+ 
+
+
+n = 2
+print(hogbuilder(n))
+
+
+
+
+#task 4:a
+def printn(num):
+       
+    if (num == 0):
+        return
+    print(num, end = " ")
+ 
+    
+    printn(num - 1)
+ 
+
+
+def pattern(n, i):
+     
+    
+    if (n == 0):
+        return
+    printn(i)
+    print("\n", end = "")
+     
+    
+    pattern(n - 1, i + 1)
+ 
+
+
+if __name__ == '__main__':
+    n = 5
+    pattern(n, 1)
+
+
+
+
+#task 4: b
+
+
+def print_space(space):     
+    if (space == 0):
+        return;    
+    print(" ", end=" ");  
+    print_space(space - 1);
+ 
+def print_asterisk(asterisk):
+     
+   
+    if (asterisk == 0):
+        return;
+     
+    print(asterisk, end =" ");
+ 
+    
+    print_asterisk(asterisk - 1);
+
+
+def pattern(n, num):
+     
+    if (n == 0):
+        return;
+     
+    print_space(n - 1);
+    print_asterisk(num - n + 1);
+    print();
+
+
+    pattern(n - 1, num);
+ 
+
+
+if __name__ == '__main__':
+    n = 5;
+    pattern(n, n);
+
+
+
+
+#task 5:
+#last problem
+import sys
+sys.setrecursionlimit(50000)
+class FinalQ:
+    def print(self, array, idx):
+        if(idx < len(array)):
+            profit = self.calcProfit(array[idx])
+            print(f"{str(idx+1)}. Investment: {array[idx]}; Profit: {profit} ")
+            self.print(array, idx+1)
+
+
+    def calcProfit(self, investment):
+        if investment <= 25000:
+            return 0.0
+        elif investment > 25000 and investment <= 100000:
+            return 4.5 + self.calcProfit(investment-100)
+        elif investment > 100000:
+            return 8.0 + self.calcProfit(investment-100)
+        else:
+            return 0
+
+
+
+
+array = [25000, 100000, 250000, 350000]
+f = FinalQ()
+f.print(array, 0)

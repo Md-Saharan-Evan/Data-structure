@@ -1,0 +1,218 @@
+﻿#task 1
+def leftshift(source,index):
+ for i in range(index):
+   for j in range(0,len(source)-1):
+     source[j]=source[j+1]
+     source[j+1]=0
+ print(source)
+source=[10,20,30,40,50,60]
+leftshift(source,3)
+
+
+
+
+#task 2
+def leftshift(source,index):
+ for i in range(0,3):
+   temp=source[0]
+  
+   for j in range(0,len(source)-1,1):
+     source[j]=source[j+1]
+
+
+   source[len(source)-1]=temp
+    
+ print(source)
+source=[10,20,30,40,50,60]
+leftshift(source,3)
+
+
+
+
+#task 3
+def right_shift(a,idx):
+ for i in range(len(a)-1,idx-1,-1):
+   #temp=a[len(a)-1]
+   #print(temp)
+   for j in range(len(a)-1,0,-1):
+     a[j]=a[j-1]
+   a[0]=0
+
+
+ print(a)
+a=[10,20,30,40,50,60]
+right_shift(a,3)
+
+
+
+
+#task 4
+def right_shift(a,idx):
+ for i in range(len(a)-1,idx-1,-1):
+   temp=a[len(a)-1]
+   for j in range(len(a)-1,0,-1):
+     a[j]=a[j-1]
+   a[0]=temp
+
+
+ print(a)
+a=[10,20,30,40,50,60]
+right_shift(a,3)
+
+
+
+
+#task 5
+def remove(a,size,idx):
+ if idx > size or idx < 0:
+     print('Wrong index')
+     return
+
+
+ elif size == len(source):
+     print('No space in array')
+     return
+ for i in range(len(a)-1):
+   if i==idx:
+     for j in range(idx,len(a)-1):
+       a[j]=a[j+1]
+ print(a)
+
+
+
+
+a=[10,20,30,40,50,0,0]
+remove(a,5,2)
+
+
+
+
+#task 6
+def remove(a,element):
+ i=0
+ while i <=(len(a)-1): 
+   if a[i]==element:
+     if a[i]==a[i+1]:
+         for j in range(i,len(a)-1):                   
+             a[j]=a[j+1]            
+         i=i
+     else:
+       for k in range(i,len(a)-1):         
+             a[k]=a[k+1]
+       i+=1     
+   else:
+     a[i]=a[i] 
+     i=i+1  
+ print(a)
+a=[10,2,30,2,50,2,2,0,0]
+remove(a,2)
+
+
+
+
+#task 7
+def splitting_array(array):
+ store1=0
+ store2=0
+ store3=0
+ store4=0
+ for i in range(len(array)//2):
+   store1+=array[i]
+ for j in range(len(array)-1,(len(array)//2)-1,-1):
+   store2+=array[j]
+ for k in range((len(array)//2+1)):
+
+
+   store3+=array[k]
+ for l in range(len(array)-1,(len(array)//2),-1):
+   store4+=array[l]
+ if store1==store2 or store3==store4:
+   print("true")
+ else:
+   print("false")
+array= [10, 3, 1, 2, 10]
+splitting_array(array)
+
+
+
+
+#task 8
+def array_series(n):
+ lst=n*[0]
+ count=1
+ List=[]
+ for i in range(n-1,-1,-1):
+   lst[i]=count
+   List+=lst
+   List+=[ ]
+   count+=1
+ print(List)
+Inp=int(input("Value of n"))
+array_series(Inp)
+#task 9
+
+
+def max_bounch_count(array):
+ max=0
+ store=0
+ for i in range(len(array)-1):
+   if array[i]==array[i+1]:
+     store+=1
+     if store>=max:
+       max=store
+   else:
+     store=1
+     if store>=max:
+       max=store
+ print(max)
+ array=[1, 2, 2, 3, 4, 4, 4]
+max_bounch_count(array)
+  
+
+
+#task10
+
+
+def repetation(source):
+   max = []
+   store=[]                  
+   count = 0
+   maxcount = 0
+   for i in range(len(source)):
+       if source[i] not in store:
+         count = count + 1
+         for j in range(i + 1, len(source)):
+           if source[i] == source[j]:
+               count = count + 1
+           if count > maxcount:
+               maxcount = count
+      
+         max+=[count]
+         count=0
+         store+=[source[i]]
+       else:
+           continue
+   matched_value = 0
+   store=[]
+   for j in range(len(max)-1):
+       if max[j] >1:                     
+           store+=[max[j]]
+   #print(store)
+   if len(store)>2:
+     for k in range(len(store)-1):
+       #print(len(store))
+       for l in range(k+1,len(store)-1):
+           if store[k]==store[l]:
+               matched_value+=1
+           else:
+               continue
+   else:
+     if store[0]==store[1]:
+       matched_value+=1
+    
+   if matched_value>0:
+     print("True")
+   else:
+     print("False")
+source = [3,4,6,3,4,7,4,6,8,6,6]
+repetation(source)

@@ -1,0 +1,132 @@
+﻿#Task 1
+
+
+class keyindex:
+   def __init__(self,a):
+       self.a=a
+       self.k=[]
+       self.store=0
+       if min(a)>=0:
+           self.store+=1
+           Max=max(a)
+           Max=Max+1
+           self.k=Max*[0]
+
+
+           for i in range(len(a)):
+               for j in range(len(self.k)):
+
+
+                   if j==a[i]:
+                       temp=self.k[j]
+                       self.k[j]=temp+1
+       else:
+           self.store-=1
+           self.Min=min(a)
+           self.num=self.Min
+           for p in range(len(a)):
+               temp=a[p]
+
+
+               a[p]=temp+(self.Min*(-1))
+           print(a)
+
+
+           Max=max(a)
+           Max=Max+1
+           self.k=Max*[0]
+
+
+           for r in range(len(a)):
+               for s in range(len(self.k)):
+
+
+                   if s==a[r]:
+                       temp=self.k[s]
+                       self.k[s]=temp+1
+              
+   def search(self,val):
+      
+       if self.store>=0:
+           for i in range(len(self.k)):
+               if i==val:
+                   print(i,"count",self.k[i],"times")
+              
+       else:
+           for i in range(len(self.k)):
+               if i==val:
+                   print(i-self.num,"count",self.k[i-self.num],"times")
+              
+  
+   def result(self):
+       return self.k
+  
+   def sort(self):
+      
+       if self.store>=0:
+          
+           for x in range(len(self.k)):
+               if self.k[x]!=0:
+                   for y in range(self.k[x]):
+                       print(x)
+       else:
+           for x in range(len(self.k)):
+               if self.k[x]!=0:
+                   for y in range(self.k[x]):
+                       print(x+self.Min)
+a=[3,5,7,-4,-2,3,7,3]
+key=keyindex(a)
+key.sort()
+print(key.result())
+key.search(3)
+
+
+
+
+output:[7, 9, 11, 0, 2, 7, 11, 7]
+-4
+-2
+3
+3
+3
+5
+7
+7
+[1, 0, 1, 0, 0, 0, 0, 3, 0, 1, 0, 2]
+7 count 3 times
+
+
+#task 2
+
+
+def Hash(array):
+   new_arr=len(array)*[0]
+   dict={"A":1,"B":2,"C":3,"D":4,"E":5,"F":6,"G":7,"H":8,"I":9,"J":10,"K":11,"L":12,"M":13,"N":14,"O":15,"P":16,"Q":17,"R":18,"S":19,"T":20,"U":21,"V":22,"W":23,"X":24,"Y":25,"Z":26}
+  
+   for a in array:
+       store=0
+       for b in a:
+          
+           for i,j in dict.items():
+               if b==i:
+                   store+=j
+          
+       store=store%6
+       if new_arr[store]==0:
+           new_arr[store]=a
+       else:
+           while new_arr[store]!=0:
+               if store==len(new_arr)-1:
+                   store=0
+               else:
+                   store+=1
+           new_arr[store]=a
+   print(new_arr)
+array=["ABC","BCD","IJK","CEF","OPQ","XZW"]
+Hash(array)
+              
+      
+      
+          
+Output:
+['ABC', 'IJK', 'CEF', 'BCD', 'OPQ', 'XZW']
